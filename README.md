@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project run here => [Create react-pizza](https://github.com/syritchenkom/react_pizza.git).
+This project run here => [Create react-pizza](https://syritchenkom.github.io/react_pizza/).
 
 ## Available Scripts
 
