@@ -11,6 +11,10 @@
 # production
 /build
 
+# Storm_(.idea) or VSCode_(.vscode) folder
+/.idea
+/.vscode
+
 # misc
 .DS_Store
 .env.local
