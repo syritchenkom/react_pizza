@@ -1,13 +1,13 @@
-import React from 'react'
+import {useState} from 'react'
 
-class Categories extends React.Component {
+/* class Categories extends React.Component {
   state = {
     activeItem: 3, 
   };
    onSelectItem = index => {
     /*this.setState({
       activeItem: index,
-    });  */
+    });
     this.state.activeItem = index;
     this.forceUpdate();
     console.log(this.state)
@@ -28,23 +28,32 @@ class Categories extends React.Component {
         </ul>
     </div>
     )    
-  }
-}
-export default Categories
+  } 
+} */
 
+export default function Categories({ items, onClickItem }) {
+  const [activeItem, setActiveItem] = useState(null);
 
-/* export default function Categories({ items, onClickItem }) {
+  const onSelectItem = (index) => {
+    setActiveItem(index)
+  };
   return (
     <div className="categories">
         <ul>
-          <li className="active">Все</li>
-          {items.map((name, index) => (
+          <li 
+            className={activeItem == null ? 'active' : ''}
+            onClick={() => onSelectItem(null)}
+          >Все</li>
+          {
+          items && 
+            items.map((name, index) => (
             <li
-              onClick={() => onClickItem(name )} 
+            className={activeItem === index ? 'active' : ''}
+              onClick={() => onSelectItem(index)} 
               key={`${name}_${index}`}
             >{name}</li>
           ))}
         </ul>
     </div>
   )
-} */
+}
