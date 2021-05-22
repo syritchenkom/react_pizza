@@ -19,8 +19,7 @@ function App() {
     <div className="wrapper">
       <Header />
       <div className="content">
-        <Route path="/" component={Home} exact />
-        {/* <Route path="/" render={() => <Home items={pizzas} />} exact /> */}
+        <Route path="/" render={() => <Home items={pizzas} />} exact />
         <Route path="/cart" component={Cart} exact />
       </div>
     </div>
