@@ -8,7 +8,9 @@ function PizzaBlock({ name, imageUrl, price }) {
       <div className="pizza-block__selector">
         <ul>
           <li className="active">тонкое</li>
-          <li>традиционное</li>
+          <li onClick={() => alert(123)} className="disabled">
+            традиционное
+          </li>
         </ul>
         <ul>
           <li className="active">26 см.</li>
