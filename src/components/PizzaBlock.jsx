@@ -74,6 +74,7 @@ PizzaBlock.prototype = {
   imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default PizzaBlock;
