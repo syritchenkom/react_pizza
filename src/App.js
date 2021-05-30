@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { Header } from './components';
 import { Home, Cart } from './pages';
-import { setPizzas as setPizzasAction } from './redux/actions/pizzas';
+import { setPizzas } from './redux/actions/pizzas';
 
 /* function App() {
   React.useEffect(() => {
@@ -33,7 +33,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props.items);
     return (
       <div className="wrapper">
         <Header />
@@ -46,16 +45,16 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.pizzas.items,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setPizzas: (items) => dispatch(setPizzasAction(items)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  (state) => {
+    return {
+      items: state.pizzas.items,
+      filters: state.filters,
+    };
+  },
+  (dispatch) => {
+    return {
+      setPizzas: (items) => dispatch(setPizzas(items)),
+    };
+  },
+)(App);
