@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ContentLoader from 'react-content-loader';
+
+import LoadingBlock from './LoadingBlock';
 
 function PizzaBlock({ name, imageUrl, price, types, sizes }) {
   const availableTypes = ['тонкое', 'традиционное'];
@@ -17,22 +17,6 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
   const onSelectSize = (index) => {
     setActiveSize(index);
   };
-
-  /* return (
-    <ContentLoader
-      speed={2}
-      width={280}
-      height={460}
-      viewBox="0 0 280 460"
-      backgroundColor="#ededed"
-      foregroundColor="#c9c9c9">
-      <circle cx="132" cy="142" r="115" />
-      <rect x="0" y="273" rx="6" ry="6" width="280" height="26" />
-      <rect x="0" y="310" rx="6" ry="6" width="280" height="84" />
-      <rect x="0" y="418" rx="6" ry="6" width="91" height="31" />
-      <rect x="137" y="408" rx="25" ry="25" width="140" height="46" />
-    </ContentLoader>
-  ); */
 
   return (
     <div className="pizza-block">
@@ -87,20 +71,5 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
     </div>
   );
 }
-
-PizzaBlock.prototype = {
-  name: PropTypes.string,
-  imageUrl: PropTypes.string,
-  price: PropTypes.number,
-  types: PropTypes.arrayOf(PropTypes.number),
-  sizes: PropTypes.arrayOf(PropTypes.number),
-};
-
-PizzaBlock.defaultProps = {
-  name: '...',
-  price: 0,
-  types: [],
-  sizes: [],
-};
 
 export default PizzaBlock;
