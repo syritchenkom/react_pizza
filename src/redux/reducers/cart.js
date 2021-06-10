@@ -1,25 +1,25 @@
 const initialState = {
-  items: [],
-  isLoaded: false,
+  items: {},
+  totalPrice: 0,
+  totalCount: 0,
 };
 
-const pizzas = (state = initialState, action) => {
+const cart = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_PIZZAS':
+    case 'ADD_PIZZA_CART':
       return {
         ...state,
-        items: action.payload,
-        isLoaded: true,
+        items: {
+          ...state.items,
+          [action.payload.id]: !state.items[action.payload.id] 
+          ? [action.payload] 
+          : [...state.items[action.payload.id], action.payload],
+        },
       };
 
-    case 'SET_LOADED':
-      return {
-        ...state,
-        isLoaded: action.payload,
-      };
     default:
       return state;
   }
 };
 
-export default pizzas;
+export default cart;

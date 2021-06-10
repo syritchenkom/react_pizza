@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import Button from '../Button';
 
-import LoadingBlock from './LoadingBlock';
-
-function PizzaBlock({ name, imageUrl, price, types, sizes }) {
+function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza }) {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
 
   const [activeType, setActiveType] = React.useState(types[0]);
-  const [activeSize, setActiveSize] = React.useState(sizes[0]);
+  const [activeSize, setActiveSize] = React.useState(0);
 
   const onSelectType = (index) => {
     setActiveType(index);
@@ -16,6 +16,18 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
 
   const onSelectSize = (index) => {
     setActiveSize(index);
+  };
+
+  const onAddPizza = () => {
+    const obj = {
+      id,
+      name,
+      imageUrl,
+      price,
+      size: availableSizes[activeSize],
+      type: availableTypes[activeType],
+    };
+    onClickAddPizza(obj);
   };
 
   return (
@@ -51,8 +63,8 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price}</div>
-        <div className="button button--outline button--add">
+        <div className="pizza-block__price">от {price} ₽</div>
+        <Button onClick={onAddPizza} className="button--outline button--add" outline>
           <svg
             width="12"
             height="12"
@@ -66,10 +78,26 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
           </svg>
           <span>Добавить</span>
           <i>2</i>
-        </div>
+        </Button>
       </div>
     </div>
   );
 }
+
+PizzaBlock.propTypes = {
+  name: PropTypes.string,
+  imageUrl: PropTypes.string,
+  price: PropTypes.number,
+  types: PropTypes.arrayOf(PropTypes.number),
+  size: PropTypes.arrayOf(PropTypes.number),
+  onClickAddPizza: PropTypes.func,
+};
+
+PizzaBlock.defaultProps = {
+  name: '---',
+  price: 0,
+  types: [],
+  sizes: [],
+};
 
 export default PizzaBlock;
