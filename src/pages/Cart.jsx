@@ -1,8 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CartItem } from '../components';
 
+import {} from '../redux/actions/cart';
+
 function Cart() {
+  const dispatc = useDispatch();
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
 
   const addedPizzas = Object.keys(items).map((key) => {
@@ -92,6 +95,7 @@ function Cart() {
                 type={obj.type}
                 size={obj.size}
                 totalPrice={items[obj.id].totalPrice}
+                totalCount={items[obj.id].items.length}
               />
             ))}
           </div>
