@@ -42,7 +42,6 @@ const cart = (state = initialState, action) => {
         ...state,
         items: newItems,
         totalCount,
-        totalPrice,
       };
     }
 
